@@ -43,7 +43,11 @@ Hook.Remove = Remove
 	Inputs: Event to hook into, unique identifier, function to run, optional priority.
 ]]
 local function Add( Event, Index, Function, Priority )
-	Priority = Clamp( Floor( tonumber( Priority ) or 0 ), -20, 20 )
+	if Priority == nil then
+		Priority = 0
+	end
+	assert(type(Priority) == "number" && Floor(Priority) == Priority)
+	assert(Priority >= -20 && Priority <= 20)
 
 	if not Hooks[ Event ] then
 		Hooks[ Event ] = {}
