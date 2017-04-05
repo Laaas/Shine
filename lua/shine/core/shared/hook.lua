@@ -46,8 +46,8 @@ local function Add( Event, Index, Function, Priority )
 	if Priority == nil then
 		Priority = 0
 	end
-	assert(type(Priority) == "number" && Floor(Priority) == Priority)
-	assert(Priority >= -20 && Priority <= 20)
+	assert(type(Priority) == "number" && Floor(Priority) == Priority, "Priority can only be an integer number!")
+	assert(Priority >= -20 && Priority <= 20, "Priority has to be in the range [20;20]!")
 
 	if not Hooks[ Event ] then
 		Hooks[ Event ] = {}
